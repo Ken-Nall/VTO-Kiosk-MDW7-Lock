@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         VTO Kiosk MDW7 Auto-Select
+// @name         VTO Kiosk Site Auto-Select
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
-// @description  Automatically selects MDW7 from the site selector dropdown
-// @author       Ken-Nall
+// @version      2.0
+// @description  Automatically selects a site from the site selector dropdown and remembers the choice for future visits. Includes a reset button to change the selection.
+// @author       Ken Nall @kennenal (MDW7)
 // @match        https://aft-ls-associateweb.na.aft.amazonoperations.app/kiosk-interest/*
 // @downloadURL  https://raw.githubusercontent.com/Ken-Nall/VTO-Kiosk-MDW7-Lock/main/vto-kiosk-mdw7-lock.user.js
 // @updateURL    https://raw.githubusercontent.com/Ken-Nall/VTO-Kiosk-MDW7-Lock/main/vto-kiosk-mdw7-lock.user.js
@@ -22,6 +22,17 @@
         messageDiv.textContent = message;
         document.body.appendChild(messageDiv);
         setTimeout(() => messageDiv.remove(), 10000);
+    }
+
+    function createResetButton() {
+        const button = document.createElement('button');
+        button.textContent = 'Reset Site';
+        button.style.cssText = 'position: fixed; top: 10px; right: 10px; background: #f44336; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; z-index: 10000; font-size: 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);';
+        button.addEventListener('click', function() {
+            localStorage.removeItem(STORAGE_KEY);
+            location.reload();
+        });
+        document.body.appendChild(button);
     }
 
     function getSavedSite() {
@@ -66,6 +77,9 @@
     function init() {
         const savedSite = getSavedSite();
         
+        // Always create the reset button
+        createResetButton();
+        
         const interval = setInterval(() => {
             const dropdown = document.getElementById('siteSelector');
             if (!dropdown) return;
@@ -95,3 +109,4 @@
         init();
     }
 })();
+
