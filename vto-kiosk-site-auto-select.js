@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         VTO Kiosk Site Auto-Select
 // @namespace    http://tampermonkey.net/
-// @version      2.0
+// @version      2.1
 // @description  Automatically selects a site from the site selector dropdown and remembers the choice for future visits. Includes a reset button to change the selection.
 // @author       Ken Nall @kennenal (MDW7)
 // @match        https://aft-ls-associateweb.na.aft.amazonoperations.app/kiosk-interest/*
-// @downloadURL  https://raw.githubusercontent.com/Ken-Nall/VTO-Kiosk-MDW7-Lock/main/vto-kiosk-mdw7-lock.user.js
-// @updateURL    https://raw.githubusercontent.com/Ken-Nall/VTO-Kiosk-MDW7-Lock/main/vto-kiosk-mdw7-lock.user.js
+// @downloadURL  https://axzile.corp.amazon.com/-/carthamus/download_script/vto-kiosk-site-auto-select.user.js
+// @updateURL    https://axzile.corp.amazon.com/-/carthamus/download_script/vto-kiosk-site-auto-select.user.js
 // @grant        none
 // ==/UserScript==
 
